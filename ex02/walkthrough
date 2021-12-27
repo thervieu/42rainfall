@@ -4,14 +4,13 @@ level2 binary with the rights of level3
 
 main function calls p()
 
-p seems to check that the stack is not changed after calling gets (0xb is the stack)
-so we can't simply change eip
-
+About p:
 we notice that a malloc call is done (through the strdup call)
 using ltrace we notice that we always have the same return address for the strdup call
 we can try and do something in the heap
 
-shellcode 21 bytes: http://shell-storm.org/shellcode/files/shellcode-575.php
+since we know the return address of the strdup we can put a shellcode inside it and run it by changing the eip register
+shellcode to execve /bin/sh : http://shell-storm.org/shellcode/files/shellcode-575.php
 
 we easily find out that eip offset is 80 characters
 

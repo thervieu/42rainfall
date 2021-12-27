@@ -1,0 +1,31 @@
+level3 binary with the rights of level4
+
+main call v
+
+about v:
+fgets call (non exploitable)
+printf call that prints what we wrote in stdin
+moves an uninitialized variable (address 0x804988c) to eax to some address and then compares it to 0x40 (= 64)
+jne to the end
+else
+fwrite call
+system call
+
+printf is exploitable (format string attack) -> we can send '%x' to get addresses etc
+
+https://en.wikipedia.org/wiki/Printf_format_string
+
+'AAAA %x %x %x %x' tells us that we are modifying the 4th modifyer address
+
+we can modify the value of the variable at address 0x804988c by using %n modifyer
+%n modifyer sets the value pointed by the address with the number of previous characters
+
+we need it at 64.
+
+we can modify only this address using %4$n format
+
+finally,
+
+chmod 777 . && touch exploit && chmod 777 exploit
+python -c 'print("\x8a\x\x\x" + "a" * 60 + "%4$n")' > exploit
+cat exploit - | ./level3
