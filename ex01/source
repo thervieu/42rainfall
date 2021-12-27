@@ -1,0 +1,9 @@
+void run() {
+    fwrite(1, "Good... Wait what?\n");
+    system("/bin/sh");
+}
+
+int main() {
+    char line[76];
+    gets(line);
+}
