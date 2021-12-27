@@ -1,9 +1,10 @@
+int m;
+
 void v() {
-    int m;
 
     char *tmp
     fgets(tmp, strlen(tmp), stdin);
-    printf("tmp");
+    printf(tmp);
     if (m == 64) {
         fwrite(1, "Wait what?!");
         system("/bin/sh");

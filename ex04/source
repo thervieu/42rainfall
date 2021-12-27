@@ -1,0 +1,18 @@
+int m;
+
+void p(char *src) {
+    printf(src);
+}
+
+void n() {
+    char *tmp
+    fgets(tmp, strlen(tmp), stdin);
+    p(tmp)
+    if (m == 0x1025544) {
+        system("cat /home/user/level5/.pass");
+    }
+}
+
+int main() {
+    n();
+}
