@@ -6,7 +6,7 @@ and a run() function not called on address 0x08048444 that fwrites something and
 gets doesnt check the size of the string we give it so it is exploitable.
 -> buffer overflow will cause the eip register to be overwritten (see stack anatomy)
 
-after some testing we find out that we overflow with 76 characters.
+after some testing we find out that we overwrite eip with characters of index 77 to 80.
 if we try with 76 'a' char and then 'ABCD' we see that we are using little Endian system
 we verify this with 'lscpu' -> Indeed little Endian
 
