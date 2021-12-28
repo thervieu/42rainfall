@@ -1,0 +1,21 @@
+four mallocs, using hopper and ltrace we find that the first and third malloc an address and the second and fourth the values of those addresses
+
+2 strcpy calls
+
+fopen, fgets
+
+puts
+
+m function not called that prints address of fgets call
+
+each malloc address is 16 bytes apart from the next one
+
+first strcpy call copies av[1] in the 1st value
+we can overflow and modify the 2nd address to the one whose value is called in the puts got call (0x08049928)
+
+2nd strcpy copies av[2] inside the 2nd value, we can just put the address of the m() function (0x080484f4) so that it is called during the got call
+
+not sure why the offset to overflow is 20 bytes in the first strcpy call but we can work with it:
+
+./level7 `python -c 'print ("a" * 20 + "\x28\x99\x04\x08")'` `python -c 'print ("\xf4\x84\x04\x08")'`
+
