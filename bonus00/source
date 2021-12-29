@@ -1,0 +1,25 @@
+void p(char **p_str) {
+    char *read_str;
+    puts(p_str);
+    read(0, &read_str, 4096);
+    char *rtn;
+    rtn = strchr(&read_str, 16);
+    rtn = strncpy(arg_0, &read_str, 20);
+}
+
+void pp(char **puts_me) {
+    char *pp_str = *puts_me;
+    char *first_p;
+    char *secound_p;
+    p(&first_p);
+    p(&secound_p);
+    strcpy(pp_str, first_p);
+    strcat(pp_str, &secound_p);
+}
+
+int main() {
+    char *puts_me;
+    pp(&puts_me);
+    puts(&puts_me);
+    return 0;
+}

