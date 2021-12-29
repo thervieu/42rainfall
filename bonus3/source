@@ -1,0 +1,27 @@
+int main(int arg0, int arg1) {
+    char *path = "/home/user/end/.pass";
+    int fd = fopen(path, "r");
+    
+    if ((fd != 0) && (ac == 2)) {
+        
+        char *fread_me;
+        fread(&fread_me, 1, 66, fd);
+        *(int8_t *)(esp + atoi(av[1]) + 0x18) = 0x0; // changes esp + 0x18 to 0x0 for some reason
+        fread(&fread_me + 66, 1, 65, fd); // since we're already at the end of the stream fread = ""
+        fclose(fd);
+
+        eax = strcmp(&fread_me, av[1]);
+        if (eax == 0) {
+            execl("/bin/sh", "sh");
+        }
+        else {
+            var_A8 = &fread_me + 66;
+            puts(var_A8);
+        }
+        eax = 0;
+    }
+    else {
+        eax = -1;
+    }
+    return eax;
+}

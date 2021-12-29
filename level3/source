@@ -1,0 +1,16 @@
+int m;
+
+void v() {
+
+    char *tmp
+    fgets(tmp, strlen(tmp), stdin);
+    printf(tmp);
+    if (m == 64) {
+        fwrite(1, "Wait what?!");
+        system("/bin/sh");
+    }
+}
+
+int main() {
+    v()
+}

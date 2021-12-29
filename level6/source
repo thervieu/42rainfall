@@ -1,0 +1,16 @@
+int n() {
+    system("cat /home/user/level7/.pass");
+}
+
+int m() {
+    puts("Nope");
+}
+
+int main(int ac, char **av) {
+    char *tmp = malloc(64) // 0x0804a008
+    char *tmp2 = malloc(4) // 0x0804a050
+
+    eax = strcpy(tmp, av[1])
+    eax();
+    return (0);
+}

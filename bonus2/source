@@ -1,0 +1,51 @@
+int *language;
+
+int greetuser(char *cat_me) {
+    char *put_me;
+    if (*language != 0x1) {
+            if (*language != 0x2) {
+                    if (*language == 0x0) {
+                            put_me = "Hello ";
+                    }
+            }
+            else {
+                    put_me = *"Goedemiddag! ";
+                    
+                }
+    }
+    else {
+            put_me =  "Hyvää päivää ";
+    }
+    strcat(&put_me, &cat_me); // overflow
+    eax = puts(&put_me);
+    return eax;
+}
+
+int main(int ac, char **av) {
+    int rtn_value;
+    if (ac != 3) {
+        rtn_value = 1;
+    }
+    else {
+            char *av1 = av[1];
+            char *cpy_me;
+            av1 = strncpy(cpy_me, av1, 40);
+            char *av2 = av[2];
+            strncpy(cpy_me + 40, var_A8, 32);
+            char *env_lang = getenv("LANG");
+            if (env_lang != 0x0) {
+                    cmp_me = "fi";
+                    if (memcmp(env_lang, cmp_me, 2) == 0x0) {
+                            *language = 0x1;
+                    }
+                    else {
+                            cmp_me = "nl";
+                            if (memcmp(env_lang, cmp_me, 2) == 0x0) {
+                                    *language = 0x2;
+                            }
+                    }
+            }
+            rtn_value = greetuser(cpy_me);
+    }
+    return rtn_value;
+}

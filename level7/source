@@ -1,0 +1,19 @@
+puts() {
+    jmp *address we use
+}
+
+int m() {
+    printf("%s - %d", 0x8049960, time())
+}
+
+int main(int ac, char **av) {
+    char *tmp = malloc(0x8);
+    *(tmp + 0x4) = malloc(0x8);
+    char *tmp2 = malloc(0x8);
+    *(tmp2 + 0x4) = malloc(0x8);
+    strcpy(*(tmp + 0x4), av[1]);
+    strcpy(*(tmp2 + 0x4), av[2] );
+    fgets(0x8049960, 0x44, fopen("/home/user/level8/.pass", 0x80486e9));
+    puts(0x8048703);
+    return 0x0;
+}

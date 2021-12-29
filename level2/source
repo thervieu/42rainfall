@@ -1,0 +1,19 @@
+void p(void * ) {
+    fflush(stdout);
+    char *gets_me;
+    gets(gets_me);
+    var_C = ret_addr;
+    if ((var_C & 0xb0000000) == 0xb0000000) {
+            printf("(%p)\n", var_C);
+            eax = exit(1);
+    }
+    else {
+            puts(gets_me);
+            eax = strdup(gets_me);
+    }
+    return eax;
+}
+
+int main() {
+    p()
+}
