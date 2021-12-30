@@ -1,5 +1,5 @@
 void main(int ac, int av[1]) {
-    var_8 = av[1];
+    var_8 = arg1;
     if (arg0 <= 0x1) {
             _exit(0x1);
     }
