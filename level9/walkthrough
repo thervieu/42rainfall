@@ -1,16 +1,16 @@
 cpp binary
 
-it needs two arguments 
+needs at least one argument
 
 we find the offset of the first argument (108 bytes)
 
-eax is dereferenced twice, the second time its value is put inside edx, which is called (its value is called)
+eax is dereferenced twice, the second time its value is put inside edx, edx's value is then called
 
-let's try and put some shellcode in edx
+let's try and put some shellcode in edx's value
 
-for this we need a pointer to the beggining of the stack
+exploit = | this_address + 4 | shellocde | buffer_to_overflow | this_address 
 
-exploit = shellcode_address + shellocde + buffer_to_overflow + address_pointing_to_shellcode_address 
+to find this_address, we just check the address of eax at *0x804867c since it's where the dereferences happen
 
 shellcode is the same as in level2: http://shell-storm.org/shellcode/files/shellcode-575.php
 
