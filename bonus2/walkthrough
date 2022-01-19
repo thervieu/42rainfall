@@ -19,7 +19,7 @@ we should be able to overflow
 
 
 after changing the LANG var to "fi" to have a longer greeting 
-with len(av[1]) > 40, we can overflow with the second arg in the ebp and the eip
+with len(av[1]) >= 40, we can overflow with the second arg in the ebp and the eip
 ebp offset = 14
 eip offset = 18
 

@@ -3,7 +3,7 @@ binary takes two arguments
 atoi(av[1]) then checks if lower than 9
 
 if yes
-tries to memcpy 4*atoi(av[1]) from av[2] into another string, we can overflow here
+tries to memcpy length of 4*atoi(av[1]) from av[2] into another string, we can overflow here
 
 then compares atoi(av[1]) to 0x574f4c46 (1464814662 in dec)
 if equal runs execl "/bin/sh"

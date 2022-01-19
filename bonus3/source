@@ -6,8 +6,8 @@ int main(int arg0, int arg1) {
         
         char *fread_me;
         fread(&fread_me, 1, 66, fd);
-        *(int8_t *)(esp + atoi(av[1]) + 0x18) = 0x0; // changes esp + 0x18 to 0x0 for some reason
-        fread(&fread_me + 66, 1, 65, fd); // since we're already at the end of the stream fread = ""
+        fread_me[atoi(av[1])] = 0x0; // put a '\0' at atoi(av[1])
+        fread(&fread_me + 66, 1, 65, fd);
         fclose(fd);
 
         eax = strcmp(&fread_me, av[1]);

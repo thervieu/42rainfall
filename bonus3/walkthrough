@@ -2,9 +2,11 @@ binary takes one argument
 
 check if atoi(av[1]) == 0
 
-entirely freads "/home/user/end/.pass"
-then freads it again and compares that string with av[1]
-but since it already read it once the file stream is on the eof
+entirely freads "/home/user/end/.pass" into 'str_read'
+puts a '\0' at the index atoi(av[1]) of 'str_read'
+compares 'str_read' and av[1]
+atoi("") = 0
+"\0" = ""
 
 ./bonus ""
 we are inside a shell

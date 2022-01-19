@@ -1,4 +1,4 @@
-int *language;
+int *language = 0x0;
 
 int greetuser(char *cat_me) {
     char *put_me;
@@ -31,7 +31,7 @@ int main(int ac, char **av) {
             char *cpy_me;
             av1 = strncpy(cpy_me, av1, 40);
             char *av2 = av[2];
-            strncpy(cpy_me + 40, var_A8, 32);
+            strncpy(cpy_me + 40, av2, 32);
             char *env_lang = getenv("LANG");
             if (env_lang != 0x0) {
                     cmp_me = "fi";

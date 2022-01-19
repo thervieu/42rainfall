@@ -10,7 +10,7 @@ int main() {
             if (strcmp(fgets_me, cmp_me) == 0x0) {
                     *auth = malloc(0x4);
                     **auth = 0x0;
-                    strcpy(*auth, fgets_me + 0x5);
+                    strcpy(*auth, fgets_me + 0x5); //here something to only add something like 16 characters max 
             }
             cmp_me = "reset";
             if (strcmp(fgets_me, cmp_me) == 0x0) {

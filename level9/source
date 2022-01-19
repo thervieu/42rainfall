@@ -10,7 +10,8 @@ void main(int ac, int av[1]) {
             ebx = operator new(0x6c);
             N::N(ebx);
             N::setAnnotation(var_8);
-            (**ebx)(ebx, var_8);
+            edx = **eax
+            edx(edx, var_8); // double pointer cause call to vtable then call to N function
     }
     return;
 }

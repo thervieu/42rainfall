@@ -5,6 +5,7 @@ needs at least one argument
 we find the offset of the first argument (108 bytes)
 
 eax is dereferenced twice, the second time its value is put inside edx, edx's value is then called
+https://guihao-liang.github.io/2020/05/30/what-is-vtable-in-cpp
 
 let's try and put some shellcode in edx's value
 

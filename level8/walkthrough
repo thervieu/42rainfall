@@ -1,8 +1,8 @@
 do while(true) loop that checks what we write
 
-"auth *" -> auth gets malloc and sets its value to the rest
-of the input (specified here with *)
-"service*", service gets strdup (same thing with *)
+"auth " -> auth gets malloc and sets its value to the rest
+of the input with a limit on substring length
+"service*", service gets strdup (specified here with *)
 "reset" frees auth
 "login" -> auth_address + 0x20 == 0 -> writes "Password:\n"
         -> auth_address + 0x20 != 0 -> runs "/bin/sh"
